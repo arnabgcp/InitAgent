@@ -7,4 +7,5 @@
 vnev
 
 .env
+tools/__pycache__/
 
