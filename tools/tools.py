@@ -7,9 +7,8 @@ import os
 import google.auth
 
 
-def SchemaInferenceTool():
     
-    class SchemaInferenceTool(BaseTool):
+class SchemaInferenceTool(BaseTool):
         """A tool to infer the BigQuery schema from a source file."""
 
         def __init__(self):
@@ -51,8 +50,7 @@ def SchemaInferenceTool():
 
             return schema
 
-def PipelineGeneratorTool():
-    class PipelineGeneratorTool(BaseTool):
+class PipelineGeneratorTool(BaseTool):
         """A tool to generate an Apache Beam pipeline script."""
 
         def __init__(self):
@@ -107,8 +105,8 @@ def PipelineGeneratorTool():
 
             return pipeline_file_path
 
-def DataflowJobRunnerTool():
-    class DataflowJobRunnerTool(BaseTool):
+
+class DataflowJobRunnerTool(BaseTool):
         """A tool to run a Dataflow job."""
 
         def __init__(self):

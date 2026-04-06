@@ -1,9 +1,10 @@
 from google.adk.agents import Agent
 from google.adk.tools.bigquery import BigQueryCredentialsConfig, BigQueryToolset
 from google.adk.tools.agent_tool import AgentTool
-from tools.tools import SchemaInferenceTool, PipelineGeneratorTool, DataflowJobRunnerTool
+from .tools.tools import SchemaInferenceTool, PipelineGeneratorTool, DataflowJobRunnerTool
 import google.auth
 import dotenv
+
 
 dotenv.load_dotenv()
 
@@ -14,9 +15,9 @@ bigquery_toolset = BigQueryToolset(
 )
 
 
-schema_inference_tool = SchemaInferenceTool()
-pipeline_generator_tool = PipelineGeneratorTool()
-dataflow_job_runner_tool = DataflowJobRunnerTool()
+#schema_inference_tool = SchemaInferenceTool()
+#pipeline_generator_tool = PipelineGeneratorTool()
+#dataflow_job_runner_tool = DataflowJobRunnerTool()
 
 data_engineer_agent = Agent(
     model="gemini-2.5-flash",
@@ -34,9 +35,9 @@ data_engineer_agent = Agent(
     ),
     tools=[
         bigquery_toolset,
-        schema_inference_tool,
-        pipeline_generator_tool,
-        dataflow_job_runner_tool,
+        SchemaInferenceTool(),
+        PipelineGeneratorTool(),
+        DataflowJobRunnerTool(),
     ]
 )
 
@@ -51,8 +52,8 @@ root_agent = Agent(
     ),
     tools=[
         bigquery_toolset,
-        data_engineer_agent,
-    ]
+    ],
+    sub_agents=[data_engineer_agent]
 )
 
 def get_root_agent():
