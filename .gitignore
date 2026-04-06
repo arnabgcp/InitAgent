@@ -1,0 +1,9 @@
+.adk/
+.gemini/
+.vscode
+venv/
+__pycache__/
+*.tmp
+*.bak
+*.swp
+.env

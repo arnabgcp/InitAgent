@@ -1,0 +1,7 @@
+google-adk
+apache-beam[gcp]
+google-cloud-bigquery
+gcsfs
+pandas
+python-dotenv
+google-auth
